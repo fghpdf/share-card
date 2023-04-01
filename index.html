@@ -1,7 +1,7 @@
 <!--
  * @Author: fghpdf
  * @Date: 2023-03-22 21:48:04
- * @LastEditTime: 2023-03-25 21:50:09
+ * @LastEditTime: 2023-04-01 21:34:39
  * @LastEditors: fghpdf
 -->
 <!DOCTYPE html>
@@ -47,7 +47,7 @@
         <div class="">
           <div class="btn btn-outline-info btn-lg">
               <label class="text-white" for="chooseFileBtn">Choose file</label>
-              <input type="file" class="form-control d-none" id="chooseFileBtn"/>
+              <input type="file" class="form-control d-none" accept="image/png, image/jpeg, image/jpg" id="chooseFileBtn"/>
           </div>
           <button type="button" class="btn btn-outline-primary btn-lg" id="downloadBtn" disabled>Download</button>
         </div>
@@ -119,6 +119,40 @@
           progressDiv.setAttribute('class', "progress-bars");
           progressH2.innerHTML="98%";
           return;
+        }
+      }
+
+      function getFileExtension(fileName) {
+        return fileName.split('.').pop();
+      }
+
+      function isFileSupported(fileExtension) {
+        switch (fileExtension) {
+          case 'jpg':
+          case 'png':
+          case 'psd':
+          case 'tiff':
+          case 'xcf':
+          case 'gif':
+          case 'bmp':
+          case 'miff':
+          case 'ico':
+          case 'dcm':
+          case 'xpm':
+          case 'pcx':
+          case 'fits':
+          case 'ppm':
+          case 'pgm':
+          case 'pfm':
+          case 'mng':
+          case 'hdr':
+          case 'dds':
+          case 'otb':
+          case 'txt':
+          case 'psb':
+            return true;
+          default:
+            return false;
         }
       }
 
